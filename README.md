@@ -13,7 +13,6 @@ charges.
 
 ## TODO
 
-* Make upstream configurable.
 * Figure out a versioning strategy for our OCI image. Currently the build script always pushes version `1.0.0`.
 
 Not for MVP, but eventually this would be nice:

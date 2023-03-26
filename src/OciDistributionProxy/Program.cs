@@ -26,7 +26,7 @@ app.MapGet("/", () =>
     return Results.Text(OciDistributionProxy.Properties.Resources.Index_html, "text/html");
 });
 
-app.MapGroup("/v2/").MapRegsitryApi();
+app.MapGroup("/v2/").MapRegsitryApi(app.Configuration);
 
 var portStr = Environment.GetEnvironmentVariable("PORT");
 if (string.IsNullOrEmpty(portStr))
