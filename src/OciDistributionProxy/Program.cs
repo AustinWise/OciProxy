@@ -12,14 +12,14 @@ var app = builder.Build();
 
 app.UseHealthChecks("/healthz");
 
-// For Google Cloud Run headers.
-var forwardHeaderOpts = new ForwardedHeadersOptions();
-forwardHeaderOpts.ForwardLimit = 1;
-forwardHeaderOpts.KnownProxies.Add(System.Net.IPAddress.Parse("169.254.1.1"));
-forwardHeaderOpts.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-app.UseForwardedHeaders(forwardHeaderOpts);
-
-app.UseHttpsRedirection();
+// For discovering the client's real IP address when running behind a proxy.
+var forwardOpts = new ForwardedHeadersOptions();
+forwardOpts.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+// We are not using the clients IP address for security purposes, just for optimizing bandwidth.
+// By clearing these lists, we trust whatever clients send us.
+forwardOpts.KnownNetworks.Clear();
+forwardOpts.KnownProxies.Clear();
+app.UseForwardedHeaders(forwardOpts);
 
 app.MapGet("/", () =>
 {

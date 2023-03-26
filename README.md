@@ -20,15 +20,18 @@ charges.
 Not for MVP, but eventually this would be nice:
 
 * Add support for redirecting to object storage based on source IP.
-* Maybe blindly trust the `X-Forwarded-For` header, since it is not a security mechanism. It is just a bandwidth optimization.
+* Add a program that copies blobs to object storage for the above feature. This could run:
+  * On some sort of schedule.
+  * Automatically based on Pub-Sub notifications when a new image is pushed.
 
 ## Developer Docs
 
-https://github.com/opencontainers/distribution-spec/blob/main/spec.md
-https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis/overview
+* https://github.com/opencontainers/distribution-spec/blob/main/spec.md
+* https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis/overview
+* Inspiration: https://github.com/kubernetes/registry.k8s.io/
 
 Test Command:
 
 ```
-docker pull oci-proxy-eafg4b64zq-uc.a.run.app/oci-proxy:1.0.0
+docker pull images.happy-turtle.dev/oci-proxy:1.0.0
 ```
