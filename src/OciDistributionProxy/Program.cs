@@ -36,5 +36,5 @@ if (string.IsNullOrEmpty(portStr))
 else
 {
     int port = int.Parse(portStr, System.Globalization.CultureInfo.InvariantCulture);
-    app.Run($"http://0.0.0.0:{port}");
+    app.Run(FormattableString.Invariant($"http://0.0.0.0:{port}"));
 }
