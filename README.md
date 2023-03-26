@@ -14,6 +14,7 @@ charges.
 ## TODO
 
 * Figure out a versioning strategy for our OCI image. Currently the build script always pushes version `1.0.0`.
+* Put something more interesting on the index page.
 
 Not for MVP, but eventually this would be nice:
 
@@ -21,11 +22,13 @@ Not for MVP, but eventually this would be nice:
 * Add a program that copies blobs to object storage for the above feature. This could run:
   * On some sort of schedule.
   * Automatically based on Pub-Sub notifications when a new image is pushed.
+* Maybe add some sort of analytics that can automatically mirror images to new cloud regions based on access patterns.
 
 ## Developer Docs
 
-* https://github.com/opencontainers/distribution-spec/blob/main/spec.md
-* https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis/overview
+* OCI Distribution Spec: https://github.com/opencontainers/distribution-spec/blob/main/spec.md
+* .NET Minimal APIs docs: https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis/overview
+* Publishing this program as a container with: https://learn.microsoft.com/dotnet/core/docker/publish-as-container
 * Inspiration: https://github.com/kubernetes/registry.k8s.io/
 
 Test Command:
