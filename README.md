@@ -11,10 +11,25 @@ A longer term goal of this project is enable you to easily mirror your container
 This will give consumers of your images a faster download experience while also saving you money on cloud egress
 charges.
 
+## Configuration
+
+Set the `UpstreamRegistry` environmental variable to the URL of your upstream registry.
+
+For example, let's say you set `UpstreamRegistry` to `https://us-central1-docker.pkg.dev/v2/oci-proxy/oci-proxy-images/`
+and you are running this proxy program on `images.happy-turtle.dev`.
+When someone pulls the `images.happy-turtle.dev/oci-proxy:1.0.0` image,
+this program will redirect them to actually pull `us-central1-docker.pkg.dev/oci-proxy/oci-proxy-images/oci-proxy:1.0.0`.
+
+Note that `UpstreamRegistry` contains the registry URL, not an image name.
+Specifically note the `/v2/` path component in the registry URL, which does not
+appear in the image name.
+
 ## TODO
 
 * Figure out a versioning strategy for our OCI image. Currently the build script always pushes version `1.0.0`.
 * Put something more interesting on the index page.
+* Maybe parse the requests more carefully before forwarding to the upstream.
+  Currently this program blindly forwards any request.
 
 Not for MVP, but eventually this would be nice:
 
