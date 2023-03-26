@@ -14,6 +14,7 @@ charges.
 ## TODO
 
 * Make upstream configurable.
+* Figure out a versioning strategy for our OCI image. Currently the build script always pushes version `1.0.0`.
 * Check if we really need to use `MapMethods` with `GET` and `HEAD`. I think `MapGet` might work.
 
 Not for MVP, but eventually this would be nice:
